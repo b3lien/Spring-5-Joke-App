@@ -8,18 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class JokeController {
+public class MotherInLawController {
 
     private JokeService jokeService;
 
     @Autowired
-    public JokeController(@Qualifier("jokeServiceImpl")JokeService jokeService) {
+    public MotherInLawController(@Qualifier("motherInLawImpl") JokeService jokeService) {
         this.jokeService = jokeService;
     }
 
-    @RequestMapping({"/",""})
-    public String showJoke(Model model) {
-        model.addAttribute("joke", jokeService.getJoke());
-        return "chucknorris";
+    @RequestMapping("/mother-in-law")
+    public String getJoke (Model model) {
+        model.addAttribute("mJokes", jokeService.getJoke());
+        return "mother";
     }
 }
